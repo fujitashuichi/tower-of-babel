@@ -29,7 +29,7 @@ class Player extends Character {
 		this.name = name;
 	}
 
-	util.inherits(Player, Character);
+	util.inherits(Player, Character); // これ外か？
 
 	move(dx, dy) {
 		this.x += dx;
@@ -41,7 +41,7 @@ class Player extends Character {
 	}
 };
 
-// あかんわからん。
+// あかん、わからん。
 // superとutilのとこがダメ。
 
 var x = process.argv[2];
