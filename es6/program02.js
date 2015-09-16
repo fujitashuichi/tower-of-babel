@@ -1,5 +1,8 @@
 // ES6 
 
+// クラス
+// コンストラクタもメソッドも同時に定義できる
+// 見やすい
 class Character {
 	constructor(x, y) {
 		this.x = x;

@@ -10,7 +10,7 @@ class Character {
 
 
 	damage() {
-		this.health_ - 10;
+		this.health_ = this.health_ - 10;
 	}
 
 	getHealth() {
@@ -23,26 +23,30 @@ class Character {
 
 };
 
+// 継承
+// CharactorをPlayerのプロトタイプにもしてくれている
 class Player extends Character {
 	constructor(x, y, name) {
-		super.call(this, x, y);
+		super(x, y);
 		this.name = name;
+		// superは親クラスのメソッドもまんま使える
+		// Ex. super.damage(); <- Charactorのdamege()
 	}
 
-	util.inherits(Player, Character); // これ外か？
+
+	// これいらん。継承はextendsで済んでる。
+	// util.inherits(Player, Character);
 
 	move(dx, dy) {
 		this.x += dx;
 		this.y += dy;
 	}
 
+
 	toString() {
-		return "name: " + this.name + " " + Player.toString.call(this);
+		return "name: " + this.name + " " + super.toString();
 	}
 };
-
-// あかん、わからん。
-// superとutilのとこがダメ。
 
 var x = process.argv[2];
 var y = process.argv[3];
