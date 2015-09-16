@@ -16,10 +16,30 @@ var PI = 3.141592;
 exports.PI = PI;
 
 var _sqrt = (function () {
-	function _sqrt(s, x, last) {
-		_classCallCheck(this, _sqrt);
+	function _sqrt(_x, _x2, _x3) {
+		var _this = this;
 
-		return x != (last ? _sqrt(s, (x + s / x) / 2.0, x) : x); // 条件演算子
+		var _again = true;
+
+		_function: while (_again) {
+			var s = _x,
+			    x = _x2,
+			    last = _x3;
+			_again = false;
+
+			_classCallCheck(_this, _sqrt);
+
+			if (x != last) {
+				_this = undefined;
+				_x = s;
+				_x2 = (x + s / x) / 2.0;
+				_x3 = x;
+				_again = true;
+				continue _function;
+			} else {
+				return x;
+			}
+		}
 	}
 
 	_createClass(_sqrt, [{
@@ -39,3 +59,17 @@ var _sqrt = (function () {
 
 exports._sqrt = _sqrt;
 ;
+
+// export const PI = 3.141592;
+
+// export class _sqrt {
+// 	constructor(s, x, last) {
+// 		return x != (last ? this(s, (x + s / x) / 2.0, x) : x); // 条件演算子
+// 	};
+// 	sqrt(s) {
+// 		return this(s, s / 2.0, 0.0);
+// 	};
+// 	square(x) {
+// 		return x * x;
+// 	};
+// };
