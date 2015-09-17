@@ -7,6 +7,36 @@ for (let element of[1, 2, 3]) {
 }
 console.log(res);*/
 
+// maxまでの値を返すfibonacciを作る
+/*
+var max = +process.argv[2];
+var fibonacci = {
+	// Symbol.iteratorを持つメソッドを持つオブジェクトにする
+	[Symbol.iterator]() {
+		let currentValue = 0,
+			nextValue = 1;
+		// iteratorオブジェクトは nextメソッドを持つオブジェクトを返す
+		return {
+			next() {
+				// nextの中では返す値(value)と次で終わりかどうかを示すプロパティ(done)を返す
+				if (nextValue > max) return {
+					done: true
+				};
+				[currentValue, nextValue] = [nextValue, currentValue + 1];
+				return {
+					done: false,
+					value: currentValue
+				};
+			}
+		}
+	}
+}
+
+for (var n of fibonacci) {
+	console.log(n);
+}
+*/
+
 // fizz-buzz
 "use strict";
 
@@ -14,21 +44,21 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
 
 var max = +process.argv[2];
 var FizzBuzz = _defineProperty({}, Symbol.iterator, function () {
-	var currentVal = 0,
-	    nextVal = 1;
+	var prev = 0,
+	    curr = 1;
 	return {
 		next: function next() {
-			if (nextVal > max) return {
-				done: false
-			};
-			var _ref = [nextVal, currentVal + nextVal];
-			currentVal = _ref[0];
-			nextVal = _ref[1];
+			var _ref = [curr, prev + 1];
+			prev = _ref[0];
+			curr = _ref[1];
 
-			[(currentVal + nextVal) % 3 == 0 ? (currentVal + nextVal) % 5 == 0 ? "FizzBuzz" : "Fuzz" : (currentVal + nextVal) % 5 == 0 ? "Buzz" : currentVal + nextVal];
+			[prev % 3 == 0 ? prev % 5 == 0 ? prev = "FizzBuzz" : prev = "Fuzz" : prev % 5 == 0 ? prev = "Buzz" : prev];
+			if (curr > max) return {
+				done: true
+			};
 			return {
 				done: false,
-				Value: currentVal
+				value: prev
 			};
 		}
 	};
