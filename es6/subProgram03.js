@@ -1,6 +1,7 @@
-// ES6
+// EX.03 Extends
 
 var util = require('util');
+
 class Character {
 	constructor(x, y) {
 		this.x = x;
@@ -19,33 +20,23 @@ class Character {
 	toString() {
 		return "x: " + this.x + " y: " + this.y + " health: " + this.getHealth();
 	}
+}
 
-};
-
-// 継承
-// CharactorをPlayerのプロトタイプにもしてくれている
 class Player extends Character {
 	constructor(x, y, name) {
 		super(x, y);
 		this.name = name;
-		// superは親クラスのメソッドもまんま使える
-		// Ex. super.damage(); <- Charactorのdamege()
 	}
-
-
-	// これいらん。継承はextendsで済んでる。
-	// util.inherits(Player, Character);
 
 	move(dx, dy) {
 		this.x += dx;
 		this.y += dy;
 	}
 
-
 	toString() {
 		return "name: " + this.name + " " + super.toString();
 	}
-};
+}
 
 var x = process.argv[2];
 var y = process.argv[3];
