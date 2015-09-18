@@ -44,6 +44,7 @@ var FizzBuzz = {
 		return {
 			next() {
 				[nxValue++];
+				// 三項演算子を使うよ
 				var i = (nxValue % 3 == 0 ? 'Fizz' : '') + (nxValue % 5 == 0 ? 'Buzz' : '') || nxValue;
 				// max超えたら抜ける
 				if (nxValue > max) return {

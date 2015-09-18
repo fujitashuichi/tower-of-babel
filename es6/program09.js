@@ -5,11 +5,10 @@
 var max = +process.argv[2];
 var FizzBuzz = function*(){
 	let nxValue = 0;
-	while (nxValue < max) {
+	while (nxValue < max) { // max超えたら抜ける
 		[nxValue++];
 		var i = (nxValue % 3 == 0 ? 'Fizz' : '') + (nxValue % 5 == 0 ? 'Buzz' : '') || nxValue;
-		// max超えたら抜ける
-		yield i;
+		yield i; // yieldで返す
 	}
 }();
 
