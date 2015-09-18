@@ -9,7 +9,7 @@ console.log(res);*/
 
 // maxまでの値を返すfibonacciを作る
 /*
-var max = +process.argv[2];
+// 1000までの値を返すfibonacciを作る
 var fibonacci = {
 	// Symbol.iteratorを持つメソッドを持つオブジェクトにする
 	[Symbol.iterator]() {
@@ -19,10 +19,10 @@ var fibonacci = {
 		return {
 			next() {
 				// nextの中では返す値(value)と次で終わりかどうかを示すプロパティ(done)を返す
-				if (nextValue > max) return {
+				if (nextValue > 1000) return {
 					done: true
 				};
-				[currentValue, nextValue] = [nextValue, currentValue + 1];
+				[currentValue, nextValue] = [nextValue, currentValue + nextValue];
 				return {
 					done: false,
 					value: currentValue
@@ -34,30 +34,24 @@ var fibonacci = {
 
 for (var n of fibonacci) {
 	console.log(n);
-}
-*/
+}*/
 
 // fizz-buzz
 var max = +process.argv[2];
 var FizzBuzz = {
 	[Symbol.iterator]() {
-		let prev = 0,
-			curr = 1;
+		var nxValue = 0;
 		return {
 			next() {
-				[prev, curr] = [curr, prev + 1];
-				[prev % 3 == 0 ?
-					(prev % 5 == 0 ?
-						prev = "FizzBuzz" : prev = "Fuzz") :
-					(prev % 5 == 0 ? prev = "Buzz" :
-						prev)
-				];
-				if (curr > max) return {
+				[nxValue++];
+				var i = (nxValue % 3 == 0 ? 'Fizz' : '') + (nxValue % 5 == 0 ? 'Buzz' : '') || nxValue;
+				// max超えたら抜ける
+				if (nxValue > max) return {
 					done: true
 				};
 				return {
 					done: false,
-					value: prev
+					value: i
 				};
 			}
 		}

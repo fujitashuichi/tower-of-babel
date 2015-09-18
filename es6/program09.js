@@ -1,17 +1,18 @@
 // ES6
-// generator
+// for of
 
-let fibonacci = function*() {
-	let currentValue = 0,
-		nextValue = 1;
-	while (currentValue < 1000) {
-		// ここでdestructuringで値をswapさせる。
-		[currentValue, nextValue] = [nextValue, currentValue + nextValue];
-		// yieldで値を返す
-		yield currentValue;
+// fizz-buzz
+var max = +process.argv[2];
+var FizzBuzz = function*(){
+	let nxValue = 0;
+	while (nxValue < max) {
+		[nxValue++];
+		var i = (nxValue % 3 == 0 ? 'Fizz' : '') + (nxValue % 5 == 0 ? 'Buzz' : '') || nxValue;
+		// max超えたら抜ける
+		yield i;
 	}
 }();
 
-for (var n of fibonacci) {
+for (var n of FizzBuzz) {
 	console.log(n);
 }
