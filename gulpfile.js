@@ -23,7 +23,7 @@ gulp.task('babel', function() {
 
 // Xto6
 gulp.task('xto', function() {
-    return gulp.src('./js/*.js')
+    gulp.src('./js/*.js')
         .pipe(plumber())
         .pipe(xto6())
         .pipe(gulp.dest('./dist/to-es6'));

@@ -1,49 +1,40 @@
-// ES6
+// EX.02 Class
 
-// クラス
-// コンストラクタもメソッドも同時に定義できる
-// 見やすい
 "use strict";
 
 var _createClass = (function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; })();
 
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
 
-var Character = (function () {
-	// クラス定義
+var Person = (function () {
+	function Person(name) {
+		_classCallCheck(this, Person);
 
-	function Character(x, y) {
-		_classCallCheck(this, Character);
-
-		// コンストラクタ
-		this.x = x;
-		this.y = y;
-		this.health_ = 100;
+		this.name = name;
 	}
 
-	_createClass(Character, [{
-		key: "damage",
-		value: function damage() {
-			// メソッドも関数内で定義できるよ
-			this.health_ = this.health_ - 10;
+	_createClass(Person, [{
+		key: "getName",
+		value: function getName() {
+			return this.name;
 		}
 	}, {
-		key: "getHealth",
-		value: function getHealth() {
-			return this.health_;
+		key: "setName",
+		value: function setName(name) {
+			this.name = name;
 		}
 	}, {
 		key: "toString",
 		value: function toString() {
-			return "x: " + this.x + " y: " + this.y + " health: " + this.getHealth();
+			return this.getName();
 		}
 	}]);
 
-	return Character;
+	return Person;
 })();
 
-var x = process.argv[2];
-var y = process.argv[3];
-var character = new Character(+x, +y);
-character.damage();
-console.log(character.toString());
+var alice = new Person("alice");
+alice.getName();
+alice.setName("James Break");
+alice.getName();
+console.log(alice.toString());
