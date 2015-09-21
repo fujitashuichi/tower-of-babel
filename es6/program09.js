@@ -2,8 +2,8 @@
 // for of
 
 // fizz-buzz
-var max = +process.argv[2];
-var FizzBuzz = function*(){
+const max = +process.argv[2];
+let FizzBuzz = function*(){
 	let nxValue = 0;
 	while (nxValue < max) { // max超えたら抜ける
 		[nxValue++];
